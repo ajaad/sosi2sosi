@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+
+	<title>sosi2sosi</title>
+
+
+</head>
+
+<body>
+	<h1> sosi2sosi converter </h1>
+	
+	<br>
+	<h4>...eller UTF-8 til cp1252 conveter</h4>
+	
+	<br><br>
+	<a href="https://en.wikipedia.org/wiki/SOSI">SOSI</a> er en forkortelse for "Samordnet Opplegg for Stedfestet Informasjon" og er navnet på
+	et særnorskt format for geografisk informasjon.
+	Formatet har vært ganske uforandret de siste årene, men nylig har det blitt vanlig å 
+	dele SOSI-filer med <a href="https://en.wikipedia.org/wiki/UTF-8">UTF-8 tegnsetting</a>.
+	Open-source-programmer som med SOSI-støtte (for eksempel <a href="https://www.qgis.org/">QGIS</a>, <a href="https://gdal.org/">GDAL</a> og <a href="https://sosicon.espenandersen.no/">SOSICON</a>) klarer dessverre ikke å håndtere filer med denne tegnsettingen.
+	Den enkleste måten er å konvertere filen tilbake tegnsettingen som var brukt tidligere: <a href="https://en.wikipedia.org/wiki/Windows-1252">CP1252</a>.
+	CP1252 er også kjent som WINDOWS-1252.
+
+	<br><br>
+	
+	Dette er en javascriptbasert løsning som konverterer sosi-filer fra UTF-8 til CP1252.
+	Siden tjenesten bruker javaskript kjører all koden i din egen nettleser, og filene dine skal derfor ikke bli sendt til noen ekstern server.
+	Velg fil fra din eget filsystem, og tjenesten vil generere en fil til nedlasting.
+	
+	<br><br>
+
+	<form method="POST">
+		<input type="file" id="sosiInn" accept=".sos">
+		<button type="button" onclick="konverter('filnavn.sos')">Konverter til cp1252</button>
+	</form>
+
+	<script src="main.js" ></script>
+
+<br>
+
+
+I Linux kan man oppnå samme resultat med følgende kommando:
+<pre><code>$ iconv -f UTF-8 -t WINDOWS-1252//TRANSLIT input.sos -o output.sos</code></pre>
+
+
+I Windows er det mulig å åpne SOSI-filen i notepad og velge "windows-1252" når man bruker "lagre som..."-funksjonen.
+
+
+<br><br>
+
+Skrevet av Anders Johan Konnestad for kurset <a href="https://www.nmbu.no/emne/LAD102?studieaar=2021" >LAD102</a> ved <a href="https://www.nmbu.no/" >NMBU</a>
+
+
+</body>
