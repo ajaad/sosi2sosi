@@ -40,14 +40,43 @@
 	<script src="main.js" ></script>
 
 <br>
+	
+<hr>
+	
+<br>
 
 
 I Linux kan man oppnå samme resultat med følgende kommando:
 <pre><code>$ iconv -f UTF-8 -t WINDOWS-1252//TRANSLIT input.sos -o output.sos</code></pre>
 
+Jeg vil tippe at dette også fungerer i MacOS og andre Unix-systemer. 
+
+<br>
+<hr>
+<br>
 
 I Windows er det mulig å åpne SOSI-filen i notepad og velge "windows-1252" når man bruker "lagre som..."-funksjonen.
 
+<br>
+<hr>
+<br>
+	
+Dessverre er SOSI-støtten i QGIS VELDIG ustabil. Mindre SOSI-filer fungerer greit. Unngå å importere forskjellige objekttyper fra samme SOSI-fil samtidig.
+Dersom man importerer linjer, polygoner og punkter fra samme fil, vil kun ét av lagene vises.
+
+
+For bruk i QGIS vil jeg anbefale å først konvertere SOSI-filen til et annet format.
+Dette kan enkelt gjøres direkte i GDAL slik (her konverteres filene til <a href="https://en.wikipedia.org/wiki/Shapefile">shapefile (.shp)</a> og <a href="https://en.wikipedia.org/wiki/Geography_Markup_Language">.gml</a>):
+	
+<pre><code>$ ogr2ogr -f "ESRI Shapefile" output.shp input_cp1252.sos</code></pre>
+	
+<pre><code>$ ogr2ogr -f "GML" output.gml input_cp1252.sos</code></pre>
+
+<hr>
+	
+<br>
+	
+Jeg håper dette programmet kommer allmenheten til nytte.
 
 <br><br>
 
